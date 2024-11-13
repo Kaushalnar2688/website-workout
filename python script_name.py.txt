@@ -1,0 +1,42 @@
+
+
+import random
+import time
+
+def subway_runner():
+    print("Welcome to Subway Runner!")
+    print("You are running on the subway tracks. Avoid obstacles to score points!")
+    
+    score = 0
+    game_over = False
+    
+    while not game_over:
+        # Randomly decide if there is an obstacle
+        obstacle = random.choice([True, False])
+        
+        # Player's choice
+        if obstacle:
+            action = input("An obstacle is ahead! Type 'dodge' to avoid it or 'run' to keep going: ").strip().lower()
+            if action == 'dodge':
+                print("You successfully dodged the obstacle!")
+                score += 1
+            elif action == 'run':
+                print("You ran into the obstacle! Game Over!")
+                game_over = True
+            else:
+                print("Invalid action! You ran into the obstacle! Game Over!")
+                game_over = True
+        else:
+            print("You are running smoothly! Keep going!")
+            score += 1
+        
+        # Display score
+        print(f"Current Score: {score}")
+        
+        # Wait for a moment before the next iteration
+        time.sleep(1)
+
+    print(f"Game Over! Your final score is: {score}")
+
+if __name__ == "__main__":
+    subway_runner()
